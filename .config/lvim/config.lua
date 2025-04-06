@@ -73,18 +73,18 @@ pcall(function()
 end)
 
 -- Setup of pytest
-require("neotest").setup({
-  adapters = {
-    require("neotest-python")({
-      dap = {
-        justMyCode = false,
-        console = "integratedTerminal",
-      },
-      args = { "--log-level", "DEBUG", "--quiet" },
-      runner = "pytest",
-    })
-  }
-})
+-- require("neotest").setup({
+--   adapters = {
+--     require("neotest-python")({
+--       dap = {
+--         justMyCode = false,
+--         console = "integratedTerminal",
+--       },
+--       args = { "--log-level", "DEBUG", "--quiet" },
+--       runner = "pytest",
+--     })
+--   }
+-- })
 
 
 -- Debugger serup with DAP c/c++/rust with gdb
@@ -397,6 +397,16 @@ lvim.plugins = {
   { "mfussenegger/nvim-dap-python" },
   { "nvim-neotest/neotest" },
   { "nvim-neotest/neotest-python" },
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && yarn install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = { "markdown" },
+  },
+
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
@@ -412,3 +422,15 @@ lvim.plugins = {
 --     require("nvim-treesitter.highlight").attach(0, "bash")
 --   end,
 -- })
+--
+--
+
+local _, icons = pcall(require, "nvim-web-devicons")
+icons.set_icon({
+  go = {
+    icon = "",
+    color = "#519aba",
+    cterm_color = "74",
+    name = "go"
+  }
+})

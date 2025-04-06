@@ -1,5 +1,6 @@
 eval $(ssh-agent) 1> /dev/null
-source ~/.config/zsh/plugins/zsh-snap/znap.zsh
+# source ~/.config/zsh/plugins/zsh-snap/znap.zsh
+#
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -16,6 +17,7 @@ export TERM=xterm-256color
 
 export FZF_BASE="/usr/bin/fzf"
 DISABLE_FZF_AUTO_COMPLETION="false"
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -87,25 +89,27 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(git
          archlinux
          colored-man-pages
-         pipenv
+         # pipenv
+         poetry
          python
          fzf
          npm
          docker
          docker-compose
          aws
-         autoupdate
+         # autoupdate
          dotenv
         )
 
 source $ZSH/oh-my-zsh.sh
-znap source marlonrichert/zsh-autocomplete
+# znap source marlonrichert/zsh-autocomplete
 # User configuration
 
-source /usr/share/nvm/init-nvm.sh
+# source /usr/share/nvm/init-nvm.sh
+#
 # export MANPATH="/usr/local/man:$MANPATH"
 
-export EDITOR="/home/jafszero/.local/bin/lvim"
+export EDITOR="~/.local/bin/lvim"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -129,16 +133,19 @@ export EDITOR="/home/jafszero/.local/bin/lvim"
 alias zshconfig="$EDITOR ~/.zshrc"
 alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
 alias s="kitty +kitten ssh"
-# alias nvim="/home/jafszero/.local/bin/lvim"
+# alias nvim="~/.local/bin/lvim"
 # alias pgadmin="source pgadmin4/bin/activate && pgadmin4"
 alias img="kitty +kitten icat"
 # alias docker="sudo docker"
 alias weather="curl wttr.in"
 
+# Directory alias}
+alias globx="cd ~/Documents/Data\ Pulse/Globx/"
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 export PATH="$PATH:$HOME/.spicetify"
-export PATH="/home/jafszero/.cargo/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
-eval "$(_PIPENV_COMPLETE=zsh_source pipenv)"
+# eval "$(_PIPENV_COMPLETE=zsh_source pipenv)"
