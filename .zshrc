@@ -13,7 +13,7 @@ fi
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-export TERM=xterm-256color
+# export TERM=xterm-256color
 
 export FZF_BASE="/usr/bin/fzf"
 DISABLE_FZF_AUTO_COMPLETION="false"
