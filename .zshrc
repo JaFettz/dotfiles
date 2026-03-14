@@ -1,4 +1,14 @@
-eval $(ssh-agent) 1> /dev/null
+SSH_ENV="$HOME/.ssh/agent/agent_env"
+
+if [ -f "${SSH_ENV}" ]; then
+  . "$SSH_ENV" > /dev/null
+else
+  ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+  chmod 600 "${SSH_ENV}"
+  . "${SSH_ENV}" > /dev/null
+  ssh-add 2> /dev/null
+fi
+
 # source ~/.config/zsh/plugins/zsh-snap/znap.zsh
 #
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
