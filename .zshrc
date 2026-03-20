@@ -3,7 +3,7 @@ SSH_ENV="$HOME/.ssh/agent/agent_env"
 if [ -f "${SSH_ENV}" ]; then
   . "$SSH_ENV" > /dev/null
 else
-  ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+  ssh-agent -a "$HOME/.ssh/agent/agent.bind" | sed 's/^echo/#echo/' > "${SSH_ENV}"
   chmod 600 "${SSH_ENV}"
   . "${SSH_ENV}" > /dev/null
   ssh-add 2> /dev/null
