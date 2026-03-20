@@ -6,7 +6,8 @@
 local M = {}
 
 M.base46 = {
-	theme = "onedark",
+	theme = "gruvbox",
+  transparency = true,
 
 	-- hl_override = {
 	-- 	Comment = { italic = true },
@@ -14,11 +15,18 @@ M.base46 = {
 	-- },
 }
 
--- M.nvdash = { load_on_startup = true }
--- M.ui = {
---       tabufline = {
---          lazyload = false
---      }
---}
+M.nvdash = { 
+  load_on_startup = true,
+  -- TODO: Add here something more beautiful
+  -- header = {
+  -- "Add art here later",
+  -- },
+}
+
+M.ui = {
+      tabufline = {
+         lazyload = false
+     }
+}
 
 return M
