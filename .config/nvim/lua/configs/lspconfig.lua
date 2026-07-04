@@ -4,9 +4,9 @@ local servers = {
   "html",
   "cssls",
   "gopls",
-  "ruff",
-  "terraform-ls",
-  "terraform",
+  -- "ruff",
+  "terraformls",
+  "yamlls"
 }
 
 vim.lsp.enable(servers)

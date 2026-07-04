@@ -10,12 +10,12 @@ M.base46 = {
   transparency = true,
 
 	-- hl_override = {
-	-- 	Comment = { italic = true },
-	-- 	["@comment"] = { italic = true },
+		-- Comment = { italic = true },
+		-- ["@comment"] = { italic = true },
 	-- },
 }
 
-M.nvdash = { 
+M.nvdash = {
   load_on_startup = true,
   -- TODO: Add here something more beautiful
   -- header = {

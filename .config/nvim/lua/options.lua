@@ -8,3 +8,11 @@ require "nvchad.options"
 
 local o = vim.o
 o.wrap = false
+
+-- vim.filetype.add({
+--   extension = {
+--     tf = "terraform",
+--     tfvars = "terraform",
+--     tfstate = "json",
+--   },
+-- })

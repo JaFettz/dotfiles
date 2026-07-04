@@ -35,4 +35,14 @@ return {
     opts = {
     }
   },
+  {
+    "nvim-tree/nvim-web-devicons",
+    opts = function()
+      return { override = require "configs.devicons"}
+    end
+
+  },
+  {
+    "hashivim/vim-terraform",
+  }
 }
