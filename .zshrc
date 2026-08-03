@@ -6,7 +6,7 @@ else
   ssh-agent -a "$HOME/.ssh/agent/agent.bind" | sed 's/^echo/#echo/' > "${SSH_ENV}"
   chmod 600 "${SSH_ENV}"
   . "${SSH_ENV}" > /dev/null
-  ssh-add 2> /dev/null
+  ssh-add > /dev/null
 fi
 
 # source ~/.config/zsh/plugins/zsh-snap/znap.zsh
@@ -119,7 +119,7 @@ source $ZSH/oh-my-zsh.sh
 #
 # export MANPATH="/usr/local/man:$MANPATH"
 
-export EDITOR="~/.local/bin/lvim"
+export EDITOR=$(which nvim)
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -140,6 +140,7 @@ export EDITOR="~/.local/bin/lvim"
 # For a full list of active aliases, run `alias`.
 #
 # Aliases
+alias dotfiles="$EDITOR ~/.dotfiles"
 alias zshconfig="$EDITOR ~/.zshrc"
 alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
 alias s="kitty +kitten ssh"
@@ -149,8 +150,7 @@ alias img="kitty +kitten icat"
 # alias docker="sudo docker"
 alias weather="curl wttr.in"
 
-# Directory alias}
-alias globx="cd ~/Documents/Data\ Pulse/Globx/"
+# Directory alias
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -159,3 +159,27 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
 # eval "$(_PIPENV_COMPLETE=zsh_source pipenv)"
+
+# OpenCode
+export PATH=$HOME/.opencode/bin:$PATH
+
+# Git
+function git-root {
+  cd -P -- "$(git rev-parse --show-toplevel)"
+}
+
+function git-clone {
+  local repository=$(basename "$1" .git)
+  local head=$(git ls-remote --symref $1 HEAD | awk '/^ref:/ {sub("refs/heads/", ""); print $2}')
+  git clone $1 "$repository/$head"
+}
+
+function git-branch {
+  local branch_name=$1
+  local original_branch=$2
+  local git_root="$(git rev-parse --show-toplevel)/.."
+  git worktree add -b "${branch_name// /-}" "$git_root/$branch_name" $2
+  cd "$git_root/$branch_name"
+  # TODO: Add stow command to copy files from the git common dirty
+  # git rev-parse --git-common-dir
+}
